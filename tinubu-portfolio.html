@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DarkSkinDude Portfolio</title>
+  <style>
+    :root {
+      --dark-bg: #000;
+      --dark-fg: rgba(255, 255, 255, 0.55);
+      --light-bg: #fff;
+      --light-fg: #0055ff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--dark-bg);
+      color: var(--dark-fg);
+      transition: background 0.6s ease, color 0.6s ease;
+    }
+
+    body.light {
+      background: var(--light-bg);
+      color: var(--light-fg);
+    }
+
+    .section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      box-sizing: border-box;
+    }
+
+    .section-box {
+      background: transparent;
+      border: 2px solid var(--dark-fg);
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      transition: all 0.6s ease;
+    }
+
+    body.light .section-box {
+      background: var(--light-bg);
+      border-color: var(--light-fg);
+      color: var(--light-fg);
+    }
+
+ .footer {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 14px;
+      color: var(--dark-fg);
+      z-index: 1000;
+      font-weight: bold;
+    }
+
+    body.light .footer {
+      color: var(--light-fg);
+    }
+
+    .nav {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      gap: 20px;
+      background: transparent;
+    }
+
+    .nav button {
+      background: none;
+      border: 2px solid transparent;
+      padding: 6px 12px;
+      color: var(--dark-fg);
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+    }
+
+    .nav button.active {
+      border-color: white;
+    }
+
+    body.light .nav button {
+      color: var(--light-fg);
+    }
+
+    body.light .nav button.active {
+      border-color: var(--light-fg);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: none;
+      color: var(--dark-fg);
+      border: 2px solid var(--dark-fg);
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+    }
+
+    body.light .theme-toggle {
+      color: var(--light-fg);
+      border-color: var(--light-fg);
+    }
+
+    .navigation-buttons {
+      margin-top: 20px;
+    }
+
+    .navigation-buttons button {
+      margin: 0 10px;
+      padding: 8px 16px;
+      border: none;
+      background: var(--dark-fg);
+      color: black;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    body.light .navigation-buttons button {
+      background: var(--light-fg);
+      color: white;
+    }
+
+    .portfolio-images {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+.portfolio-images img {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 2px solid var(--dark-fg);
+  transition: 0.3s;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+
+    body.light .portfolio-images img {
+      border-color: var(--light-fg);
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      margin-top: 20px;
+      align-items: center;
+    }
+
+    .contact-links div {
+      text-align: center;
+    }
+
+    .contact-links img {
+      width: 50px;
+      height: 50px;
+      display: block;
+      margin: 0 auto 8px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    #intro-box {
+      transform: scale(1.2);
+      opacity: 0;
+      transition: transform 0.8s ease, opacity 0.8s ease;
+    }
+
+    #intro-box.visible {
+      transform: scale(1);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div class="nav">
+    <button onclick="navigateTo(0)" id="nav-intro">Intro</button>
+    <button onclick="navigateTo(1)" id="nav-about">About</button>
+    <button onclick="navigateTo(2)" id="nav-portfolio">Portfolio</button>
+    <button onclick="navigateTo(3)" id="nav-contact">Contact</button>
+  </div>
+
+  <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+
+  <!-- Sections -->
+  <div class="section" id="intro">
+    <div class="section-box" id="intro-box">
+      <h1>Hi, I'm DarkSkinDude, 3D Modeller</h1>
+    </div>
+    <div class="navigation-buttons" style="display:none;" id="intro-buttons">
+      <button onclick="navigateTo(1)">Next</button>
+    </div>
+  </div>
+
+  <div class="section" id="about">
+    <div class="section-box">
+      <h2>About</h2>
+      <p>Hi, I'm a passionate 3D modeler focusing on high-quality, engine-ready gun models for games.</p>
+	<h2>Pricing</h2>
+	<p> Strictly in robux </p>
+	<h3>Models</h3>
+	      <p>Handguns > 2k to 4k<br><br>Long guns > 5k +<br><br>Custom Designs > 10k +</p>
+	<h3>Textures</h3>
+	<p>Procedural Textures(Material and Color) > 1k per model<br><br>Custom Textures(Hand Drawn, Shadows, Color, Material) > 3k per model
+	
+    </div>
+    <div class="navigation-buttons">
+      <button onclick="navigateTo(0)">Back</button>
+      <button onclick="navigateTo(2)">Next</button>
+    </div>
+  </div>
+
+  <div class="section" id="portfolio">
+    <div class="section-box">
+      <h2>Portfolio</h2>
+      <p>- Clean and workable topology<br><br>- Fast and procedural texturing<br><br>- Easy imports and exports to engines like Roblox Studio and Unity</p>
+      <div class="portfolio-images">
+        <img src="https://cdn.discordapp.com/attachments/1120053749763821669/1357584761421430814/Screenshot_2025-04-01_211122.png?ex=67f0bcd5&is=67ef6b55&hm=f97d3a98d7845e49caa2d1e84b5286d4dca9b19f89f2581a8da3d8850d9d7a57&" alt="Portfolio 1">
+        <img src="https://cdn.discordapp.com/attachments/1120053749763821669/1357585741458178159/image.png?ex=67f0bdbf&is=67ef6c3f&hm=9c50f32cb9870cd14471a1e66aab094f93b6f62399e5e5e9db0cec7789efa668&" alt="Portfolio 2">
+        <img src="https://cdn.discordapp.com/attachments/1120053749763821669/1357586300626014268/image.png?ex=67f0be44&is=67ef6cc4&hm=4dc544a962311508f17feb85dfbd86cbe29f8f138bf2ba999368e573b3440355&" alt="Portfolio 3">
+      </div>
+    </div>
+    <div class="navigation-buttons">
+      <button onclick="navigateTo(1)">Back</button>
+      <button onclick="navigateTo(3)">Next</button>
+    </div>
+  </div>
+
+  <div class="section" id="contact">
+    <div class="section-box">
+      <h2>Contact</h2>
+      <div class="contact-links">
+        <div>
+          <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-C4592D028743D7E0FF7551869F9AFA1E-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Roblox" />
+          <a href="https://www.roblox.com/users/8001397264/profile" target="_blank">Chillestguyfrg</a>
+        </div>
+        <div>
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" />
+          <a href="https://www.discord.com/app" target="_blank">darkskindude_</a>
+        </div>
+      </div>
+    </div>
+    <div class="navigation-buttons">
+      <button onclick="navigateTo(2)">Back</button>
+    </div>
+  </div>
+
+<div class="footer">
+  Website made by <a href="https://www.roblox.com/users/2679813931/profile" target="_blank" class="footer-link">@stephenonschool8529</a>
+</div>
+
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const navButtons = document.querySelectorAll('.nav button');
+    const themeToggle = document.querySelector('.theme-toggle');
+
+    let current = 0;
+
+    function navigateTo(index) {
+      current = index;
+      sections[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      updateActiveButton(index);
+    }
+
+    function updateActiveButton(index) {
+      navButtons.forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+      });
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      themeToggle.textContent = document.body.classList.contains('light') ? 'Light Mode' : 'Dark Mode';
+    }
+
+    // Intro animation
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById('intro-box').classList.add('visible');
+        document.getElementById('intro-buttons').style.display = 'block';
+      }, 0);
+      navigateTo(0);
+    };
+
+    // Dynamic scroll detection
+    window.addEventListener('scroll', () => {
+      let closestIndex = 0;
+      let closestDist = Infinity;
+      sections.forEach((section, i) => {
+        const rect = section.getBoundingClientRect();
+        const dist = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closestIndex = i;
+        }
+      });
+      updateActiveButton(closestIndex);
+    });
+  </script>
+</body>
+</html>
