@@ -206,7 +206,6 @@
   </style>
 </head>
 <body>
-  <!-- Navigation -->
   <div class="nav">
     <button onclick="navigateTo(0)" id="nav-intro">Intro</button>
     <button onclick="navigateTo(1)" id="nav-about">About</button>
@@ -215,8 +214,7 @@
   </div>
 
   <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
-
-  <!-- Sections -->
+	
   <div class="section" id="intro">
     <div class="section-box" id="intro-box">
       <h1>Hi, I'm DarkSkinDude, 3D Modeller</h1>
@@ -249,9 +247,11 @@
       <h2>Portfolio</h2>
       <p>- Clean and workable topology<br><br>- Fast and procedural texturing<br><br>- Easy imports and exports to engines like Roblox Studio and Unity</p>
       <div class="portfolio-images">
-        <img src="https://cdn.discordapp.com/attachments/1120053749763821669/1357584761421430814/Screenshot_2025-04-01_211122.png?ex=67f0bcd5&is=67ef6b55&hm=f97d3a98d7845e49caa2d1e84b5286d4dca9b19f89f2581a8da3d8850d9d7a57&" alt="Portfolio 1">
-        <img src="https://cdn.discordapp.com/attachments/1120053749763821669/1357585741458178159/image.png?ex=67f0bdbf&is=67ef6c3f&hm=9c50f32cb9870cd14471a1e66aab094f93b6f62399e5e5e9db0cec7789efa668&" alt="Portfolio 2">
-        <img src="https://cdn.discordapp.com/attachments/1120053749763821669/1357586300626014268/image.png?ex=67f0be44&is=67ef6cc4&hm=4dc544a962311508f17feb85dfbd86cbe29f8f138bf2ba999368e573b3440355&" alt="Portfolio 3">
+        <img src="https://i.gyazo.com/a8e57a8f2f8da7802b82539de0513a85.png" alt="Portfolio Image 1">
+        <img src="https://i.gyazo.com/160088a140325b1fd89e8aef10ea6e02.png" alt="Portfolio Image 2">
+        <img src="https://i.gyazo.com/73c7a469485a561561214e8a4f119d38.png" alt="Portfolio Image 3">
+	<img src="https://i.gyazo.com/ac8e2478f674a456a11fae94745534e2.png" alt="Portfolio Image 4">
+	<img src="https://i.gyazo.com/b5bb4c62e6db1b7d3101880a462636d0.png" alt="Portfolio Image 5">
       </div>
     </div>
     <div class="navigation-buttons">
@@ -308,7 +308,6 @@
       themeToggle.textContent = document.body.classList.contains('light') ? 'Light Mode' : 'Dark Mode';
     }
 
-    // Intro animation
     window.onload = () => {
       setTimeout(() => {
         document.getElementById('intro-box').classList.add('visible');
@@ -317,7 +316,6 @@
       navigateTo(0);
     };
 
-    // Dynamic scroll detection
     window.addEventListener('scroll', () => {
       let closestIndex = 0;
       let closestDist = Infinity;
